@@ -41,12 +41,12 @@ export const Hero: React.FC = () => {
         Sticky Viewport Stage:
         Pins perfectly for the full 600vh scroll scrub.
       */}
-      <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
+      <div className="sticky top-0 w-full h-screen h-[100dvh] overflow-hidden flex items-center justify-center">
         
         {/* Background Giant Outline Title (Layer 1) */}
         <div
           aria-hidden="true"
-          className="absolute z-[2] top-[10%] left-0 right-0 text-center pointer-events-none transition-transform duration-75 will-change-transform"
+          className="absolute z-[2] top-[14%] md:top-[10%] left-0 right-0 text-center pointer-events-none transition-transform duration-75 will-change-transform px-4"
           style={{ transform: `translateY(${nameParallaxY}px)` }}
         >
           <span className="hero-name-outline block">
@@ -59,7 +59,7 @@ export const Hero: React.FC = () => {
           Rendered with screen blend & depth perspective
         */}
         <div className="absolute inset-0 z-[10] flex items-center justify-center pointer-events-none">
-          <div className="relative w-full h-full max-w-[1920px] max-h-[1080px] flex items-center justify-center">
+          <div className="relative w-full h-full max-w-[1920px] max-h-[100dvh] md:max-h-[1080px] flex items-center justify-center">
             <CinematicFrameAnimation scrollProgress={scrollProgress} />
           </div>
         </div>
@@ -76,23 +76,23 @@ export const Hero: React.FC = () => {
 
         {/* Bottom-Left Hero Title & Identity (Layer 15) */}
         <div
-          className="absolute z-[15] left-[clamp(20px,5vw,72px)] bottom-[9vh] max-w-[580px] pointer-events-none transition-opacity duration-300"
+          className="absolute z-[15] left-[clamp(16px,5vw,72px)] bottom-[4vh] md:bottom-[9vh] right-[16px] md:right-auto max-w-[580px] pointer-events-none transition-opacity duration-300"
           style={{ opacity: heroFadeOpacity }}
         >
-          <h1 className="font-disp font-bold text-[clamp(1.6rem,3.4vw,2.8rem)] leading-[1.1] text-ink tracking-tight">
+          <h1 className="font-disp font-bold text-[clamp(1.45rem,3.4vw,2.8rem)] leading-[1.1] text-ink tracking-tight">
             DARKXLUFICER<span className="text-ember animate-caret font-medium">_</span>
           </h1>
 
-          <p className="mt-2.5 font-mono text-[11px] tracking-[0.34em] text-body uppercase">
+          <p className="mt-2 font-mono text-[10px] md:text-[11px] tracking-[0.22em] md:tracking-[0.34em] text-body uppercase">
             AI ENGINEER &amp; BUILDER
           </p>
 
-          <p className="mt-2 font-mono text-[10.5px] tracking-[0.14em] text-mut">
+          <p className="mt-1.5 font-mono text-[9px] md:text-[10.5px] tracking-[0.06em] md:tracking-[0.14em] text-mut">
             ML <span className="text-ember font-semibold">→</span> DL <span className="text-ember font-semibold">→</span> RL <span className="text-ember font-semibold">→</span> GENERATIVE <span className="text-ember font-semibold">→</span> AGENTIC
           </p>
 
-          <p className="mt-4 font-mono text-[9px] tracking-[0.22em] text-[#858076] max-w-[440px]">
-            <span className="text-ember">[</span> SCROLL TO SCRUB 48 AI-UPSCALED 1080P FRAMES · YASHRAJ GHADAGE <span className="text-ember">]</span>
+          <p className="mt-2.5 font-mono text-[8px] md:text-[9px] tracking-[0.16em] md:tracking-[0.22em] text-[#858076] max-w-[440px]">
+            <span className="text-ember">[</span> SCROLL TO SCRUB 48 AI-UPSCALED 1080P FRAMES <span className="hidden sm:inline">· YASHRAJ GHADAGE</span> <span className="text-ember">]</span>
           </p>
         </div>
 

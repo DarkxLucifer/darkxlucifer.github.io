@@ -93,9 +93,9 @@ export const CinematicFrameAnimation: React.FC<CinematicFrameAnimationProps> = (
         Zero black screen while textures initialize.
       */}
       <img
-        src="/frames/ezgif-frame-001.jpg"
+        src={`${baseUrl}/frames/ezgif-frame-001.jpg`}
         alt="DarkxLucifer Cinema Initial Frame"
-        className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none -z-10"
+        className="absolute inset-0 w-full h-full object-cover object-[45%_center] select-none pointer-events-none -z-10"
         loading="eager"
         decoding="sync"
       />
@@ -109,7 +109,7 @@ export const CinematicFrameAnimation: React.FC<CinematicFrameAnimationProps> = (
         ref={canvasRef}
         width={1920}
         height={1080}
-        className="w-full h-full object-cover select-none pointer-events-none"
+        className="w-full h-full object-cover object-[45%_center] select-none pointer-events-none"
         style={{
           imageRendering: '-webkit-optimize-contrast',
         }}
