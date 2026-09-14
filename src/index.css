@@ -1,0 +1,258 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #080706;
+    --ink: #ece8e1;
+    --body: #c7c2b8;
+    --mut: #9b968b;
+    --line: rgba(236, 232, 225, 0.11);
+    --line2: rgba(236, 232, 225, 0.24);
+    --ember: #ff5a1f;
+    --ember2: #ff8a50;
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --disp: 'Unbounded', 'Space Grotesk', sans-serif;
+    --sans: 'Space Grotesk', sans-serif;
+    color-scheme: dark;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+    background-color: var(--bg);
+    color: var(--body);
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--body);
+    font-family: var(--sans);
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--ember);
+    color: #0a0603;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ember);
+    outline-offset: 3px;
+  }
+
+  /* Custom Sleek Charcoal & Ember Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #27231f;
+    border: 2px solid var(--bg);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--ember);
+  }
+}
+
+/* Typography Helpers */
+.font-disp {
+  font-family: var(--disp);
+}
+
+.font-mono-code {
+  font-family: var(--mono);
+}
+
+/* Content Container matching reference */
+.wrap-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 72px);
+}
+
+/* Sections */
+.sec-border {
+  position: relative;
+  padding: clamp(90px, 14vh, 160px) 0;
+  border-top: 1px solid var(--line);
+}
+
+/* Kicker */
+.kicker {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--ember);
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+.kicker::before {
+  content: '// ';
+}
+
+/* Section Titles with Outline */
+.sec-title {
+  font-family: var(--disp);
+  font-weight: 700;
+  font-size: clamp(2rem, 5.6vw, 4.3rem);
+  line-height: 1.08;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.sec-title .ol {
+  color: transparent;
+  -webkit-text-stroke: 1.3px rgba(236, 232, 225, 0.45);
+}
+
+/* Hero Background Outline Title */
+.hero-name-outline {
+  font-family: var(--disp);
+  font-weight: 900;
+  font-size: clamp(2.2rem, 8vw, 8.5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(236, 232, 225, 0.35);
+  user-select: none;
+}
+
+/* Pulsing Dots */
+@keyframes pdot {
+  0%, 100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.animate-pdot {
+  animation: pdot 1.6s infinite;
+}
+
+/* Blinking Cursor */
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.animate-caret {
+  animation: blink 1.1s steps(2) infinite;
+}
+
+/* Scroll Cue Drop Line */
+@keyframes scue {
+  0% { transform: translateY(-12px); }
+  100% { transform: translateY(50px); }
+}
+.animate-scue {
+  animation: scue 2s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
+}
+
+/* Pipeline Flow Animation */
+@keyframes pflow {
+  0%, 100% { opacity: 0.25; }
+  45% { opacity: 1; }
+}
+.animate-pflow {
+  animation: pflow 2.6s infinite;
+}
+
+/* Marquee infinite ticker */
+@keyframes marq {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marq {
+  animation: marq var(--dur, 30s) linear infinite;
+  will-change: transform;
+}
+.animate-marq:hover {
+  animation-play-state: paused;
+}
+.animate-marq-rev {
+  animation: marq var(--dur, 30s) linear infinite reverse;
+  will-change: transform;
+}
+.animate-marq-rev:hover {
+  animation-play-state: paused;
+}
+
+/* Operating Loop Ember Journey */
+@keyframes loop-ember {
+  0% { left: 0%; opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { left: calc(100% - 7px); opacity: 0; }
+}
+.animate-loop-ember {
+  animation: loop-ember 7s ease-in-out infinite;
+}
+
+/* Subtle Film Grain SVG Overlay */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  z-index: 88;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+
+/* Perimeter Dark Vignette */
+.vignette-frame {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 86;
+  background: radial-gradient(118% 88% at 50% 38%, transparent 55%, rgba(2, 1, 1, 0.65) 100%);
+}
+
+/* Warm Ember Ambient Background Glow */
+.ember-glow-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(52% 42% at 72% 16%, rgba(255, 90, 31, 0.05), transparent 70%);
+}
+
+/* Interactive Click-to-Orange Flash & Halo */
+.text-orange-flash {
+  color: #ff5a1f !important;
+  border-color: #ff5a1f !important;
+  text-shadow: 0 0 14px rgba(255, 90, 31, 0.85), 0 0 28px rgba(255, 90, 31, 0.45) !important;
+  transition: color 0.15s ease, text-shadow 0.15s ease, border-color 0.15s ease !important;
+}
+
+@keyframes orangePulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 90, 31, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(255, 90, 31, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 90, 31, 0);
+  }
+}
+.animate-orange-pulse {
+  animation: orangePulse 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
